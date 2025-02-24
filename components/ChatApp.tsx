@@ -39,12 +39,12 @@ const ChatApp: React.FC = () => {
   const callApi = async (message: string) => {
     try {
       setLoading(true);
+      const formData = new FormData();
+      formData.append("message", message);
+
       const response = await fetch("https://api.example.com/chat", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ message }),
+        body: formData,
       });
       const data = await response.json();
       return data.reply || "I couldn't process your request.";
@@ -83,7 +83,6 @@ const ChatApp: React.FC = () => {
       {/* Header */}
       <div className="chat-header fixed-header">
         <img src="/ubsicon.png" alt="ChatBot Logo" className="org-icon" />
-        <h2 className="chat-title">AI ChatBot</h2>
       </div>
 
       {/* Chat Box */}
