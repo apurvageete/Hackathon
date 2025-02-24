@@ -1,0 +1,187 @@
+/* Chat Container - No Scrolling */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: #f8f9fa;
+  padding: 20px;
+  overflow: hidden; /* Ensures the entire page does not scroll */
+}
+
+
+/* Header */
+.chat-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #343a40;
+  color: #ffffff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.chat-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.org-icon {
+  width: 50px;
+  height: 50px;
+}
+
+/* Fixed Header */
+.fixed-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: #343a40;
+  z-index: 1000;
+}
+
+ /* Chat Box - Fixed size & prevents shifting */
+ .chat-box {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   width: 50%;
+   height: 80vh;
+   background: #ffffff;
+   border-radius: 10px;
+   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+   padding-top: 20px;
+   padding-bottom:10px;
+   padding-left:20px;
+   padding-right:20px;
+   margin-top: 80px; /* To avoid overlapping with the fixed header */
+   overflow: hidden;
+ }
+
+ /* Messages - Ensures scrolling within the chat box */
+ .chat-messages {
+   flex-grow: 1;
+   display: flex;
+   flex-direction: column;
+   overflow-y: auto;
+   padding-bottom: 10px;
+   max-height: calc(100% - 60px);
+ }
+
+ /* Help Text */
+ .help-text {
+   font-size: 16px;
+   font-weight: bold;
+   color: #555;
+   text-align: center;
+   margin-bottom: 8px;
+ }
+
+ /* Input Container - Keeps input at the bottom */
+ .chat-input-container {
+   display: flex;
+   align-items: center;
+   width: 100%;
+   margin-top: auto;
+ }
+
+
+
+.message-card {
+  max-width: 80%;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  word-wrap: break-word;
+}
+
+.user-message {
+  align-self: flex-end;
+  background-color: #fff6f6;
+  color: black;
+}
+
+.bot-message {
+  align-self: flex-start;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  color: black;
+}
+
+
+.chat-textarea {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+  min-height: 50px;
+}
+
+.chat-send-button {
+  background: #343a40;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease-in-out;
+  margin-left: 10px;
+}
+
+.chat-send-button:hover {
+  background-color: #0056b3;
+}
+
+/* Input field */
+.chat-textarea {
+  flex: 1;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+  min-height: 50px;
+}
+
+/* Placeholder text inside input */
+.chat-textarea::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* Ensure messages with code are styled properly */
+pre {
+  background: #f5f5f5;
+  padding: 10px;
+  border-radius: 5px;
+  overflow-x: auto;
+}
+
+code {
+  font-family: monospace;
+}
+
+/* Help Text */
+.help-text {
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+html, body {
+  overflow-x: hidden;
+}
