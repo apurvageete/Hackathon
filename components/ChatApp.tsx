@@ -8,6 +8,7 @@ import { Send } from "lucide-react";
 import hljs from "highlight.js";
 import "highlight.js/styles/github.css";
 import "./ChatApp.css";
+import marked from "marked";
 
 type Message = {
   type: "user" | "bot";
@@ -36,6 +37,14 @@ const ChatApp: React.FC = () => {
     return hljs.highlightAuto(code).value;
   };
 
+  const formatResponseMessage = (response: string) => {
+    return marked.parse(response, {
+      highlight: function (code) {
+        return hljs.highlightAuto(code).value;
+      },
+    });
+  }
+
   const callApi = async (message: string) => {
     try {
       setLoading(true);
@@ -47,7 +56,12 @@ const ChatApp: React.FC = () => {
         body: formData,
       });
       const data = await response.json();
-      return data.reply || "I couldn't process your request.";
+     // Apply formatting using markdown
+      const formattedResponse =
+        data.content?.map((item: { value: string }) => formatResponseMessage(item.value)).join("<br/><br/>") ||
+        "No response received.";
+
+      return formattedResponse;
     } catch (error) {
       return "Error fetching response. Please try again.";
     } finally {
